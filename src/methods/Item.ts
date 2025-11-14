@@ -210,25 +210,25 @@ export class NpcItem extends Item {
         isSick = !!(this.timeout > 80 || this.times % 2)
       }
       if (this.status !== 4) {
-        // Draw Body
+        // Draw Body -> SVG logo 
         context.fillStyle = isSick ? '#BABABA' : this.color
-        context.beginPath()
-        context.arc(this.x, this.y, this.width / 2, 0, Math.PI, true)
-        switch (this.times % 2) {
-          case 0:
-            context.lineTo(this.x - this.width * 0.5, this.y + this.height * 0.4)
-            context.quadraticCurveTo(this.x - this.width * 0.4, this.y + this.height * 0.5, this.x - this.width * 0.2, this.y + this.height * 0.3)
-            context.quadraticCurveTo(this.x, this.y + this.height * 0.5, this.x + this.width * 0.2, this.y + this.height * 0.3)
-            context.quadraticCurveTo(this.x + this.width * 0.4, this.y + this.height * 0.5, this.x + this.width * 0.5, this.y + this.height * 0.4)
-            break
-          case 1:
-            context.lineTo(this.x - this.width * 0.5, this.y + this.height * 0.3)
-            context.quadraticCurveTo(this.x - this.width * 0.25, this.y + this.height * 0.5, this.x, this.y + this.height * 0.3)
-            context.quadraticCurveTo(this.x - this.width * 0.25, this.y + this.height * 0.5, this.x + this.width * 0.5, this.y + this.height * 0.3)
-            break
+        /*
+        blink: 223.576,13.413 > 14,579,0
+        blinkc: 222.482,15.112,222.721,13.971
+        start: 226.535,42
+        startc: 229.824,39.827,227.47,41.95
+        move: 208.977,17.839
+        min: 208.977,13.413
+        */
+        let blink = [this.x + 4.579, this.y, this.x+3.485, this.y+1.699, this.x+3.724, this.y+0.558]
+        let start = [this.x+7.558, this.y+29.052, this.x+10.865, this.y+26.414, this.x+8.493, this.y+28.537]
+        let move = [this.x-10, this.y + 4.326]
+        let path1 = new Path2D(`M${start[0]},${start[1]-18}h-18.202c-0.791,0-1.491-0.508-1.736-1.262c-0.241-0.751,0.021-1.574,0.658-2.043 l5.589-4.069c1.162-0.846,2.899-0.056,2.899,1.475c0,0.566-0.258,1.119-0.748,1.479c0,0-0.73,0.532-1.056,0.767 c3.766,0,6.44,0,10.109,0c-5.347-4.101-16.183-12.421-16.183-12.421c-0.405-0.315-0.715-0.788-0.715-1.517 c0-0.938,0.851-1.758,1.745-1.758h20.479c0.981,0,1.791,0.836,1.791,1.823c0,0.656-0.339,1.13-0.671,1.407l-5.362,4.463 c-0.776,0.647-1.925,0.54-2.574-0.237c-0.284-0.337-0.421-0.753-0.421-1.162c0-0.526,0.225-1.045,0.657-1.407 c0,0,0.892-0.742,1.484-1.234c-3.707,0-6.063,0-9.926,0c4.842,3.716,14.368,10.974,16.095,12.301 C${start[2]},${start[3]-18},${start[4]},${start[5]-18},${start[0]},${start[1]-18} M${move[0]},${move[1]-18}h20.362c1.009,0,1.826,0.816,1.826,1.829 c0,1.007-0.817,1.821-1.826,1.821h-20.362c-1.009,0-1.826-0.814-1.826-1.821C207.151,18.655,${move[0]},${move[1]-18}z`);
+        context.fill(path1);
+        if(this.times % 2 == 1) {
+            let path2 = new Path2D(`M${blink[0]},${blink[1]-18}l3.12-2.049c0.851-0.557,1.995-0.321,2.552,0.533c0.559,0.847,0.322,1.99-0.53,2.55 l-3.122,2.044c-0.85,0.561-1.992,0.322-2.551-0.528C${blink[2]},${blink[3]-18},${blink[4]},${blink[5]-18},${blink[0]},${blink[1]-18}`);
+            context.fill(path2);
         }
-        context.fill()
-        context.closePath()
       }
       context.fillStyle = '#FFF'
       if (isSick) {

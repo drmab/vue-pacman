@@ -219,16 +219,22 @@ export class BeanMap extends Map {
   constructor(options: {}) {
     super(options)
     this.draw = (context: any, globalObj: GlobalEnv) => {
+      //context.font = 'bold 30px Arial';
       for (let j = 0; j < this.yLength; j++) {
         for (let i = 0; i < this.xLength; i++) {
           if (!this.get(i, j)) {
             const pos = this.coord2position(i, j)
             context.fillStyle = '#F5F5DC'
             if (this._stage.CONFIG.goods.includes(`${i},${j}`)) {
+              // SVG based on index
+              let text = (this._stage.CONFIG.goods.indexOf(`${i},${j}`) % 2) ? '%' : '$'
+              context.fillText(text, pos.x - 12, pos.y + 12);
+              /*
               context.beginPath()
               context.arc(pos.x, pos.y, 3 + this.times % 2, 0, 2 * Math.PI, true)
               context.fill()
               context.closePath()
+              */
             }
             else {
               context.fillRect(pos.x - 2, pos.y - 2, 4, 4)
