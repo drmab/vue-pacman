@@ -227,7 +227,7 @@ export class BeanMap extends Map {
             context.fillStyle = '#F5F5DC'
             if (this._stage.CONFIG.goods.includes(`${i},${j}`)) {
               // SVG based on index
-              let text = (this._stage.CONFIG.goods.indexOf(`${i},${j}`) % 2) ? '%' : '$'
+              let text = this._stage.CONFIG.good_icons[this._stage.CONFIG.goods.indexOf(`${i},${j}`)]
               context.fillText(text, pos.x - 12, pos.y + 12);
               /*
               context.beginPath()

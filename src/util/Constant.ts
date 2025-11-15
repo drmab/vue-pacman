@@ -41,6 +41,7 @@ export const MAP_DATA = [
     wall_color: '#09f',
     // energy beans
     goods: ['1,3', '26,3', '1,23', '26,23'],
+    good_icons: ['🎓', '🤝', '👁‍🗨', '🗓']
   },
   {
     // 2
