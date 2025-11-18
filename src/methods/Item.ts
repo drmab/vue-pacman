@@ -191,7 +191,7 @@ export class PlayerItem extends Item {
             } else {
               globalObj.BONUS += parseInt(prime)
             }
-            globalObj.SALAIRE = globalObj.ECHELONS[this._stage.index] (globalObj.SALAIRE * (globalObj.PRIMES/100)) + globalObj.BONUS
+            globalObj.SALAIRE = globalObj.ECHELONS[this._stage.index] + (globalObj.SALAIRE * (globalObj.PRIMES/100)) + globalObj.BONUS
             this._stage.NPCs.forEach((item: Item) => {
               if (item.status === 1) {
                 // If the NPC is in a normal state, set it to a temporary state
