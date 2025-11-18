@@ -22,8 +22,12 @@ const globalObj = ref({
   COS: [1, 0, -1, 0],
   SIN: [0, 1, 0, -1],
   SCORE: 0,
+  SALAIRE: 103154, // échelon 3
+  PRIMES: 0,
+  BONUS: 0,
   LIFE: 5,
   NPC_COUNT: 4,
+  ECHELONS: [0,103154,106209,109340,112576,115899,119352,122863],
 })
 
 onMounted(() => {

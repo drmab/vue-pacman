@@ -62,7 +62,7 @@ export class NameItem extends Item {
       context.textAlign = 'center'
       context.textBaseline = 'middle'
       context.fillStyle = '#FFF'
-      context.fillText('Pac Man', this.x, this.y)
+      context.fillText('MPAc-Man', this.x, this.y)
     }
   }
 }
@@ -75,22 +75,22 @@ export class ScoreLevelItem extends Item {
       context.textAlign = 'left'
       context.textBaseline = 'bottom'
       context.fillStyle = '#C33'
-      context.fillText('SCORE', this.x, this.y)
+      context.fillText('Salaire', this.x, this.y)
       context.font = '26px Helvetica'
       context.textAlign = 'left'
       context.textBaseline = 'top'
       context.fillStyle = '#FFF'
-      context.fillText(globalObj.SCORE.toString(), this.x + 12, this.y)
+      context.fillText(globalObj.SALAIRE.toString(), this.x + 12, this.y)
       context.font = 'bold 26px Helvetica'
       context.textAlign = 'left'
       context.textBaseline = 'bottom'
       context.fillStyle = '#C33'
-      context.fillText('LEVEL', this.x, this.y + 72)
+      context.fillText('ECHELON', this.x, this.y + 72)
       context.font = '26px Helvetica'
       context.textAlign = 'left'
       context.textBaseline = 'top'
       context.fillStyle = '#FFF'
-      context.fillText((this._stage.index).toString(), this.x + 12, this.y + 72)
+      context.fillText(((this._stage.index + 2)).toString(), this.x + 12, this.y + 72)
     }
   }
 }
@@ -185,6 +185,13 @@ export class PlayerItem extends Item {
           this._stage.BeanMap.set(this.coord.x, this.coord.y, 1)
           // eat energy beans
           if (this._stage.CONFIG.goods.includes(`${this.coord.x},${this.coord.y}`)) {
+            let prime = this._stage.CONFIG.primes[this._stage.CONFIG.goods.indexOf(`${this.coord.x},${this.coord.y}`)]
+            if(prime.includes('%')){
+              globalObj.PRIMES += parseFloat(prime.substring(1))
+            } else {
+              globalObj.BONUS += parseInt(prime)
+            }
+            globalObj.SALAIRE = globalObj.ECHELONS[this._stage.index] (globalObj.SALAIRE * (globalObj.PRIMES/100)) + globalObj.BONUS
             this._stage.NPCs.forEach((item: Item) => {
               if (item.status === 1) {
                 // If the NPC is in a normal state, set it to a temporary state
@@ -376,7 +383,7 @@ export class FinalScoreItem extends Item {
       context.font = '20px Helvetica'
       context.textAlign = 'center'
       context.textBaseline = 'middle'
-      context.fillText(`FINAL SCORE: ${globalObj.SCORE + 50 * Math.max(globalObj.LIFE - 1, 0)}`, this.x, this.y)
+      context.fillText(`SALAIRE FINAL: ${globalObj.SALAIRE}`, this.x, this.y)
     }
   }
 }

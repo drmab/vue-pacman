@@ -3,6 +3,10 @@ export interface GlobalEnv {
   COS: number[]
   SIN: number[]
   SCORE: number
+  SALAIRE: number
+  PRIMES: number
+  BONUS: number
+  ECHELONS: number[]
   LIFE: number
   NPC_COUNT: number
 }
