@@ -41,7 +41,8 @@ export const MAP_DATA = [
     wall_color: '#09f',
     // energy beans
     goods: ['1,3', '26,3', '1,23', '26,23'],
-    good_icons: ['🎓', '🤝', '👁‍🗨', '🗓']
+    good_icons: ['🤝', '🌇', '📅', '🗺'],
+    primes: ['%6', '%4', '%6', '%30'], // rétention, soir, semaine, région
   },
   {
     // 2
@@ -80,6 +81,8 @@ export const MAP_DATA = [
     ],
     wall_color: '#FF5983',
     goods: ['1,2', '26,2', '1,27', '26,27'],
+    good_icons: ['🚚', '📋', '🌛', '👩‍🎓'],
+    primes: ['25000', '%5', '%11', '%4'], // déménagement, employés, nuit, étudiants
   },
   {
     // 3

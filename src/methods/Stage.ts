@@ -111,6 +111,7 @@ export class GameStage extends Stage {
               if (item.status === 3) {
                 item.status = 4
                 globalObj.SCORE += 10
+                // globalObj.SALAIRE -> augmentation d'échelon
               }
               else {
                 this.status = 3
