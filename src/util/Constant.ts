@@ -43,6 +43,7 @@ export const MAP_DATA = [
     goods: ['1,3', '26,3', '1,23', '26,23'],
     good_icons: ['🤝', '🌇', '📅', '🗺'],
     primes: ['%6', '%4', '%6', '%30'], // rétention, soir, semaine, région
+    texte_primes: ['Rétention (6 %)', 'Soir (4 %)', '40 heures (6 %)', 'Région (30 %)'],
   },
   {
     // 2
@@ -83,6 +84,7 @@ export const MAP_DATA = [
     goods: ['1,2', '26,2', '1,27', '26,27'],
     good_icons: ['🚚', '📋', '🌛', '👩‍🎓'],
     primes: ['25000', '%5', '%11', '%4'], // déménagement, employés, nuit, étudiants
+    texte_primes: ['déménagement (25 000 $)', 'Supervision d\'employés (5 %)', '%Nuits (11 %)', '%Supervision de résidents (4 %)'], // déménagement, employés, nuit, étudiants
   },
   {
     // 3

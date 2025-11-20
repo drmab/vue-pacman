@@ -7,6 +7,7 @@ export interface GlobalEnv {
   PRIMES: number
   BONUS: number
   ECHELONS: number[]
+  PARCOURS: string
   LIFE: number
   NPC_COUNT: number
 }

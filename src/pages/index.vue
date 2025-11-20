@@ -28,6 +28,7 @@ const globalObj = ref({
   LIFE: 5,
   NPC_COUNT: 4,
   ECHELONS: [0,103154,106209,109340,112576,115899,119352,122863],
+  PARCOURS: ''
 })
 
 onMounted(() => {

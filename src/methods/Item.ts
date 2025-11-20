@@ -95,6 +95,12 @@ export class ScoreLevelItem extends Item {
       context.textBaseline = 'top'
       context.fillStyle = '#FFF'
       context.fillText(((this._stage.index + 2)).toString(), this.x + 12, this.y + 72)
+      context.fillText('PRIMES', this.x, this.y + 72)
+      context.font = '26px Helvetica'
+      context.textAlign = 'left'
+      context.textBaseline = 'top'
+      context.fillStyle = '#FFF'
+      context.fillText(globalObj.PARCOURS), this.x + 12, this.y + 92)
     }
   }
 }
@@ -189,13 +195,15 @@ export class PlayerItem extends Item {
           this._stage.BeanMap.set(this.coord.x, this.coord.y, 1)
           // eat energy beans
           if (this._stage.CONFIG.goods.includes(`${this.coord.x},${this.coord.y}`)) {
-            let prime = this._stage.CONFIG.primes[this._stage.CONFIG.goods.indexOf(`${this.coord.x},${this.coord.y}`)]
+            let indice = this._stage.CONFIG.goods.indexOf(`${this.coord.x},${this.coord.y}`);
+            let prime = this._stage.CONFIG.primes[indice]
             if(prime.includes('%')){
               globalObj.PRIMES += parseFloat(prime.substring(1))
             } else {
               globalObj.BONUS += parseInt(prime)
             }
             globalObj.SALAIRE = globalObj.ECHELONS[this._stage.index] + (globalObj.SALAIRE * (globalObj.PRIMES/100)) + globalObj.BONUS
+            globalObj.PARCOURS = this._stage.CONFIG.texte_primes[indice]
             this._stage.NPCs.forEach((item: Item) => {
               if (item.status === 1) {
                 // If the NPC is in a normal state, set it to a temporary state
